@@ -113,7 +113,7 @@ cv.setWindowProperty("frame", cv.WND_PROP_FULLSCREEN, cv.WINDOW_FULLSCREEN)
 cap = cv.VideoCapture(0)
 
 # Set the threshold distance for the warning (in meters)
-WARNING_DISTANCE_THRESHOLD = 0.5  # Adjust this value as needed
+WARNING_DISTANCE_THRESHOLD = 0.7  # Adjust this value as needed
 prevDistance = 0.00
 while True:
     ret, frame = cap.read()
