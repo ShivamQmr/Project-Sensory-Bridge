@@ -153,13 +153,16 @@ while True:
             x, y = d[2]
         currDistance = float(round(distance, 2))
         cv.putText(frame, f' {round(distance, 2)} metres', (x + 5, y + 13), FONTS, 0.8, (0, 0, 0), 2)
-        if (abs(currDistance-prevDistance)>0.25):
-            speak(f'{d[0]} {round(currDistance, 2)}m ahead.')
-        prevDistance = currDistance
+        if distance:
+            currDistance = float(round(distance, 2))
+            cv.putText(frame, f' {round(distance, 2)} metres', (x + 5, y + 13), FONTS, 0.8, (0, 0, 0), 2)
+            if (abs(currDistance-prevDistance)>0.25):
+                speak(f'{d[0]} {round(currDistance, 2)}m ahead.')
+            prevDistance = currDistance
 
-        if distance < WARNING_DISTANCE_THRESHOLD:
-            cv.putText(frame, "Warning: Too Close!", (50, 50), FONTS, 1, (0, 0, 255), 2)
-            speak(f'Warning! {d[0]} too close.')
+            if distance < WARNING_DISTANCE_THRESHOLD:
+                cv.putText(frame, "Warning: Too Close!", (50, 50), FONTS, 1, (0, 0, 255), 2)
+                speak(f'Warning! {d[0]} too close.')
     cv.imshow('frame', frame)
 
     key = cv.waitKey(1)

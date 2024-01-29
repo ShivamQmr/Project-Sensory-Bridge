@@ -1,4 +1,14 @@
 import cv2 as cv
+import pyttsx3
+
+# speak function
+def speak(inpText):
+       engine = pyttsx3.init('sapi5')
+       voices = engine.getProperty('voices')
+       engine.setProperty('voice', voices[1].id)
+       engine.say(inpText)
+       engine.runAndWait()
+    
 # Recognizing
 def persons_input(hand_cordinates):
     def distance(x1,y1,x2,y2):
@@ -165,6 +175,9 @@ def get_fram(image,hand_cordinate,string):
       
       # Write letter in the frame
       image = cv.putText(cv.flip(image,1),string, (maxX-end_point[0],start_point[1]+20), cv.FONT_HERSHEY_SIMPLEX, 0.5, (255,255,255), 1, cv.LINE_AA)
+    #   print(string)
+      speak(string)
+    
       return cv.flip(image,1)
 
    image=show_holy_rect(image,(x_min(hand_cordinate)-7,y_max(hand_cordinate)+7),(x_max(hand_cordinate)+7,y_min(hand_cordinate)-7),string)
