@@ -11,7 +11,7 @@ class FileRunnerApp(QWidget):
     def init_ui(self):
         # Created buttons
         btn_run_file1 = QPushButton('Object Detection and Distance Estimation', self)
-        btn_run_file2 = QPushButton('Detect ASL Alphabets', self)
+        btn_run_file2 = QPushButton('Detect ASL', self)
 
         # Connected buttons to functions
         btn_run_file1.clicked.connect(self.run_file1)
